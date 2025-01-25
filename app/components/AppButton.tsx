@@ -24,12 +24,12 @@ function AppButton({ children, color = undefined }: Props) {
 const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.primary,
-    height: 60,
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 30,
     marginBottom: 20,
+    padding: 12,
   },
   text: {
     color: "white",
