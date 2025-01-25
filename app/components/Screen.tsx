@@ -1,14 +1,14 @@
 import React, { ReactNode } from "react";
 
 import Constants from "expo-constants";
-import { SafeAreaView, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import { StyleSheet, StyleProp, ViewStyle, View } from "react-native";
 
 interface Props {
   children: ReactNode;
   style?: StyleProp<ViewStyle>;
 }
 function Screen({ children, style }: Props) {
-  return <SafeAreaView style={[styles.screen, style]}>{children}</SafeAreaView>;
+  return <View style={[styles.screen, style]}>{children}</View>;
 }
 
 const styles = StyleSheet.create({
