@@ -10,6 +10,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import colors from "../configs/colors";
 import IconTypes from "../configs/icons";
+import defaultStyles from "../configs/styles";
 
 interface Props extends TextInputProps {
   icon?: IconTypes;
@@ -41,10 +42,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   textInput: {
-    color: colors.medium,
-    fontSize: 18,
+    ...defaultStyles.text,
     flex: 1,
-    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
   },
   icon: {
     marginRight: 10,
