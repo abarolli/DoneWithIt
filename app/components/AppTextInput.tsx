@@ -8,8 +8,8 @@ import {
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import colors from "../../configs/colors";
-import IconTypes from "../../configs/icons";
+import colors from "../configs/colors";
+import IconTypes from "../configs/icons";
 
 interface Props extends TextInputProps {
   icon?: IconTypes;

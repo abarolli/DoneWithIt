@@ -10,8 +10,8 @@ import {
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { IconProps } from "@expo/vector-icons/build/createIconSet";
 
-import IconTypes from "../../configs/icons";
-import colors from "../../configs/colors";
+import IconTypes from "../configs/icons";
+import colors from "../configs/colors";
 
 interface Props {
   name: IconTypes;

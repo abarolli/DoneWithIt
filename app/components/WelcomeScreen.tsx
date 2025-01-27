@@ -2,7 +2,7 @@ import React from "react";
 import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
 import AppButton from "./AppButton";
 
-import colors from "../../configs/colors";
+import colors from "../configs/colors";
 
 function WelcomeScreen() {
   return (

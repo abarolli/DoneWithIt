@@ -14,7 +14,7 @@ import ReanimatedSwipeable, {
 } from "react-native-gesture-handler/ReanimatedSwipeable";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-import colors from "../../configs/colors";
+import colors from "../configs/colors";
 import { SharedValue } from "react-native-reanimated";
 
 interface Props {

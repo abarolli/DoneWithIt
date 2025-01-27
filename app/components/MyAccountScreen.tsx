@@ -3,8 +3,8 @@ import Screen from "./Screen";
 import ListItem from "./ListItem";
 import { FlatList, StyleSheet, View } from "react-native";
 import IconListItem from "./IconListItem";
-import IconTypes from "../../configs/icons";
-import colors from "../../configs/colors";
+import IconTypes from "../configs/icons";
+import colors from "../configs/colors";
 import ListItemSeparator from "./ListItemSeparator";
 
 function MyAccountScreen() {
