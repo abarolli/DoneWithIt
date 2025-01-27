@@ -5,6 +5,7 @@ import { FlatList, StyleSheet, View } from "react-native";
 import IconListItem from "./IconListItem";
 import IconTypes from "../../configs/icons";
 import colors from "../../configs/colors";
+import ListItemSeparator from "./ListItemSeparator";
 
 function MyAccountScreen() {
   const iconSize = 25;
@@ -57,6 +58,7 @@ function MyAccountScreen() {
               style={styles.accountOptions}
             />
           )}
+          ItemSeparatorComponent={ListItemSeparator}
           ListFooterComponent={() => (
             <IconListItem
               name={accountOptions[accountOptions.length - 1].icon}
