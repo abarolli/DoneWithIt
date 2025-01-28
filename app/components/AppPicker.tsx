@@ -16,30 +16,24 @@ import colors from "../configs/colors";
 import Screen from "./Screen";
 import PickerItem from "./PickerItem";
 
+export type AppPickerItemType = { label: string; value: string };
+
 interface Props {
   icon?: IconTypes;
+  items: AppPickerItemType[];
   placeholder: string;
-  onSelection: any;
+  onSelection: (item: AppPickerItemType) => void;
+  selection?: AppPickerItemType;
 }
 
-const items = [
-  {
-    title: "Item1",
-    value: "1",
-  },
-  {
-    title: "Item2",
-    value: "2",
-  },
-  {
-    title: "Item3",
-    value: "3",
-  },
-];
-
-function AppPicker({ icon, placeholder, onSelection }: Props) {
+function AppPicker({
+  icon,
+  items,
+  placeholder,
+  selection,
+  onSelection,
+}: Props) {
   const [modalVisible, setModalVisible] = useState(false);
-  const [selection, setSelection] = useState("");
 
   return (
     <>
@@ -53,7 +47,9 @@ function AppPicker({ icon, placeholder, onSelection }: Props) {
               style={styles.icon}
             />
           )}
-          <Text style={styles.text}>{selection ? selection : placeholder}</Text>
+          <Text style={styles.text}>
+            {selection ? selection.label : placeholder}
+          </Text>
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
@@ -66,13 +62,12 @@ function AppPicker({ icon, placeholder, onSelection }: Props) {
           <Button title="Close" onPress={() => setModalVisible(false)} />
           <FlatList
             data={items}
-            keyExtractor={(item) => item.value}
+            keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
               <PickerItem
-                title={item.title}
+                label={item.label}
                 value={item.value}
                 onPress={() => {
-                  setSelection(item.title);
                   onSelection(item);
                   setModalVisible(false);
                 }}
