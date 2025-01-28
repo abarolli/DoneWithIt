@@ -1,23 +1,30 @@
-import React, { ReactNode } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import {
+  GestureResponderEvent,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 
 import colors from "../configs/colors";
 
 interface Props {
-  children: string;
+  title: string;
   color?: string;
+  onPress: (event: GestureResponderEvent) => void;
 }
 
-function AppButton({ children, color = undefined }: Props) {
+function AppButton({ title, color = colors.primary, onPress }: Props) {
   return (
-    <View
+    <TouchableOpacity
       style={{
         ...styles.button,
         backgroundColor: color || styles.button.backgroundColor,
       }}
+      onPress={onPress}
     >
-      <Text style={styles.text}>{children}</Text>
-    </View>
+      <Text style={styles.text}>{title}</Text>
+    </TouchableOpacity>
   );
 }
 
@@ -27,13 +34,15 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 30,
-    marginBottom: 20,
-    padding: 12,
+    borderRadius: 25,
+    marginVertical: 10,
+    padding: 15,
   },
   text: {
     color: "white",
-    fontSize: 20,
+    fontSize: 18,
+    textTransform: "uppercase",
+    fontWeight: "bold",
   },
 });
 export default AppButton;
