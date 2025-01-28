@@ -8,15 +8,15 @@ import {
 } from "react-native";
 
 interface Props {
-  title: string;
+  label: string;
   value: string;
   onPress: (event: GestureResponderEvent) => void;
 }
 
-function PickerItem({ title, onPress }: Props) {
+function PickerItem({ label, onPress }: Props) {
   return (
     <TouchableOpacity onPress={onPress}>
-      <Text style={styles.text}>{title}</Text>
+      <Text style={styles.text}>{label}</Text>
     </TouchableOpacity>
   );
 }
