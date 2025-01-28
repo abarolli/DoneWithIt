@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   Button,
+  FlatList,
   Modal,
   StyleSheet,
   Text,
@@ -13,14 +14,33 @@ import defaultStyles from "../configs/styles";
 import IconTypes from "../configs/icons";
 import colors from "../configs/colors";
 import Screen from "./Screen";
+import PickerItem from "./PickerItem";
 
 interface Props {
   icon?: IconTypes;
   placeholder: string;
+  onSelection: any;
 }
 
-function AppPicker({ icon, placeholder }: Props) {
+const items = [
+  {
+    title: "Item1",
+    value: "1",
+  },
+  {
+    title: "Item2",
+    value: "2",
+  },
+  {
+    title: "Item3",
+    value: "3",
+  },
+];
+
+function AppPicker({ icon, placeholder, onSelection }: Props) {
   const [modalVisible, setModalVisible] = useState(false);
+  const [selection, setSelection] = useState("");
+
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
@@ -33,7 +53,7 @@ function AppPicker({ icon, placeholder }: Props) {
               style={styles.icon}
             />
           )}
-          <Text style={styles.text}>{placeholder}</Text>
+          <Text style={styles.text}>{selection ? selection : placeholder}</Text>
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
@@ -44,6 +64,21 @@ function AppPicker({ icon, placeholder }: Props) {
       <Modal visible={modalVisible} animationType="slide">
         <Screen>
           <Button title="Close" onPress={() => setModalVisible(false)} />
+          <FlatList
+            data={items}
+            keyExtractor={(item) => item.value}
+            renderItem={({ item }) => (
+              <PickerItem
+                title={item.title}
+                value={item.value}
+                onPress={() => {
+                  setSelection(item.title);
+                  onSelection(item);
+                  setModalVisible(false);
+                }}
+              />
+            )}
+          />
         </Screen>
       </Modal>
     </>
